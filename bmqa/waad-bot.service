@@ -1,0 +1,15 @@
+[Unit]
+Description=Waad Telegram Bot (R3D Source)
+After=network.target redis-server.service
+Wants=redis-server.service
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/bot/bmqa
+ExecStart=/home/ubuntu/bot/bmqa/venv/bin/python3 main.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
