@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+sudo apt-get update
+sudo apt-get install -y ffmpeg redis-server python3-venv
+sudo service redis-server start
+sudo systemctl enable redis-server
+
+python3 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+pip install https://github.com/KurimuzonAkuma/pyrogram/archive/dev.zip --force-reinstall
+
+echo ""
+echo "التثبيت خلص. شغل الأمر التالي أول مرة عشان تدخل التوكن والـ SUDO ID:"
+echo "source venv/bin/activate && python3 main.py"
